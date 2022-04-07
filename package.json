@@ -2,13 +2,24 @@
   "name": "enviroment-check",
   "version": "1.0.0",
   "description": "A production library for checking the presence of enviroment variables",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"lib/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "ts-jest": "^27.1.4",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.6.3"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
