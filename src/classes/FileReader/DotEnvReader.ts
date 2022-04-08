@@ -12,6 +12,7 @@ class DotEnvReader implements FileReader {
     public async getFile(): Promise<Array<string>> {
         return new Promise((resolve, reject) => {
             try {
+                const lines: Array<string> = [];
                 const reader = readline.createInterface({
                     input: fs.createReadStream(this.pathToFile),
                     output: process.stdout,
@@ -19,10 +20,11 @@ class DotEnvReader implements FileReader {
                 });
                 reader.on("line", (line: string) => {
                     const variable = line.split("=")[0];
-                    console.log(variable);
+                    lines.push(variable);
                 });
-                reader.on("close", () => resolve([]));
+                reader.on("close", () => resolve(lines));
             } catch (e: any) {
+                console.log("Error ->", e.message);
                 reject(e.message);
             }
         });
